@@ -224,15 +224,18 @@ let g:vim_markdown_list_item_indent = 2
 " auto turn on
 " autocmd vimenter * NERDTree
 " ctrl+n to toggle file tree
-noremap <leader>n :NERDTreeToggle<CR>
+noremap <silent><leader>n :NERDTreeToggle<CR>
 " ignore file
 let NERDTreeIgnore=[
     \ '\.pyc$','\~$','\.swp','\.git$','\.pyo$','\.svn$','\.swp$','__pycache__'
     \ ]
-nnoremap <leader>v :NERDTreeFind<cr>
+nnoremap <silent><leader>v :NERDTreeFind<cr>
 " 样式
 " let g:NERDTreeDirArrowExpandable = '>'
 " let g:NERDTreeDirArrowCollapsible = '-'
+" 注意： m 可以进行创建文件等操作，不要漏了
+
+
 
 
 
@@ -264,10 +267,16 @@ let g:mdip_imgdir = './image'
 " python 插件配置
 " let g:python3_host_prog='D:/learn/anaconda3/envs/learn/python.exe'
 
+
+
+
 " vim-which-key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " By default timeoutlen is 1000 ms
 set timeoutlen=500
+
+
+
 
 " vim-gitgutter
 " set the default value of updatetime to 600ms
@@ -313,6 +322,11 @@ let g:airline_section_y = airline#section#create(['%{strftime("%H:%M")}'])
 " " let g:airline#parts#ffenc#skip_expected_string='utf-8[dos]'
 " "不显示文档总字数
 let g:airline#extensions#wordcount#enabled = 0
+
+" 分割符
+" let g:airline_left_sep=' '
+" let g:airline_right_sep=' '
+
 
 " java补全方案
 
@@ -524,6 +538,8 @@ nnoremap < <<
 nnoremap <silent><leader>p :cd %:h<cr>
 
 nnoremap o A<cr>
+
+nnoremap <silent><leader>d :bd<cr>
 
 "================map end==================
 
