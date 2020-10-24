@@ -192,7 +192,7 @@ let g:startify_custom_header = [
 
 " 设置自动session保存
 let g:startify_session_persistence = 1
-" session保存前执行，防止因为懒加载而出现冲突
+" session保存前执行，防止因为懒加载而出现冲突。不用加<cr>，自动会回车
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
     \ 'NERDTreeClose',
