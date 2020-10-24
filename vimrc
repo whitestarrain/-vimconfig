@@ -1,6 +1,8 @@
 "================leader start==================
 let mapleader="\<space>"
 
+" 关于帮助文档。:help startify 即可
+" 然后使用 c-] c-i c-o 进行跳转查看
 "================leader end==================
 
 
