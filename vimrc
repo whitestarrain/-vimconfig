@@ -167,13 +167,14 @@ call plug#end()
 
 
 " vim-smooth-scroll config
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 4)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 
 " vim-startify config
+" 设置Session时不要打开插件，比如NERDTree侧边栏，否则会报错
 " 关闭自动切换目录
 let g:startify_change_to_dir = 0
 let g:startify_custom_header = [
@@ -185,10 +186,11 @@ let g:startify_custom_header = [
       \ '    _// \\      \\     |||_.-,_|___|_,-.||   \\,-._)(|_   ',
       \ '   (__)(__)    (__)   (__)_)\_)-   -(_/ (_")  (_/(__)__)  '
       \]
-
-" startify的session和Nerdree的书签会起冲突
 " 跳转到开始菜单
 nnoremap <leader>st :Startify<cr>
+nnoremap <leader>ss :SSave<cr>
+
+
 
 " vim-markdown config
 " 禁用折叠
@@ -375,10 +377,11 @@ set lazyredraw             " Only redraw when necessary.
 set splitbelow             " Open new windows below the current window.
 set splitright             " Open new windows right of the current window.
 
-set cursorline             " Find the current line quickly.
+" set cursorcolumn          "  光标所在列高亮，但是移动时可能会卡顿，所以关闭
+set cursorline             "  光标所在行高亮
 set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
-set synmaxcol   =200       " Only highlight the first 200 columns.
+set synmaxcol   =5000       " 高亮显示行数，小一点节省内存，但是可能对大文件出现渲染错误
 
 
 " vim 默认在插入模式关闭输入法，可以修改 iminsert 选项来开启。
