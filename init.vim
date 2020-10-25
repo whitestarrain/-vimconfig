@@ -6,7 +6,6 @@ let mapleader="\<space>"
 "================leader end==================
 
 
-
 "================plug start==================
 
 " Specify a directory for plugins
@@ -29,9 +28,10 @@ Plug 'junegunn/vim-slash'
 
 " prettier 格式化插件
 " post install (yarn install | npm install) then load plugin only for editing supported files
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'npm install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" 安装依赖npm i -g prettier
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 
 
@@ -166,6 +166,11 @@ call plug#end()
 
 " ===============plugConfig start==================
 
+" prettier
+" 取消注解需求
+let g:prettier#autoformat_require_pragma = 0
+" 关闭自动格式化
+let g:prettier#autoformat = 1
 
 " vim-smooth-scroll config
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
@@ -452,6 +457,7 @@ set synmaxcol   =5000       " 高亮显示行数，小一点节省内存，但�
 
 " 设置字体大小
 " set guifont=Cousine_NF:h11
+" let g:Guifont="Cousine_NF:h11"
 
 " F2进入粘贴模式
 set pastetoggle=<F2>
