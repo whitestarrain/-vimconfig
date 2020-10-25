@@ -287,14 +287,23 @@ autocmd FileType md nmap <buffer><silent> <leader>m :call mdip#MarkdownClipboard
 let g:mdip_imgdir = './image'  " 图片存放位置
 let g:mdip_imgdir_intext = g:mdip_imgdir " md中()中的位置
 
-" 定义设置路径的函数。注意：要使用call
-function SetImagePath()
+" 定义设置路径的函数。注意：调用要使用call。
+" ! 是重复时强行覆盖
+function! SetImagePath()
+    call ShowImagePath()
     let l:name = input('Image path: ')
     let g:mdip_imgdir = l:name
     let g:mdip_imgdir_intext = l:name
     return name
 endfunction
+" . 作为字符串连接符
+function! ShowImagePath()
+  echo 'now:::mdip_imgdir:  ' . g:mdip_imgdir
+  echo 'now:::mdip_imgdir_intext:  ' . g:mdip_imgdir_intext
+endfunction
+
 nnoremap <leader>sm :call SetImagePath()<cr>
+
 
 " python 插件配置
 " let g:python3_host_prog='D:/learn/anaconda3/envs/learn/python.exe'
