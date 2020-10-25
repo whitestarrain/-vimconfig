@@ -1,8 +1,8 @@
-"================leader start==================
 let mapleader="\<space>"
 
 " 关于帮助文档。:help startify 即可
 " 然后使用 c-] c-i c-o 进行跳转查看
+" nvim-qt 要加上 --no-ext-tabline，才能使用airline的bufferline
 "================leader end==================
 
 
@@ -13,14 +13,6 @@ let mapleader="\<space>"
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('D:\learn\neovim0.5\Neovim\share\autoload')
-
-
-
-
-"---------------------
-
-" buffer tab
-
 
 "---------------------
 "让翻页更顺畅
@@ -130,8 +122,8 @@ Plug 'tpope/vim-surround'
 
 
 " 多文件模糊搜索
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "---------------------
 
@@ -172,11 +164,7 @@ call plug#end()
 "================plug end==================
 
 
-"================plugConfig start==================
-
-" comfortable-motion config
-
-
+" ===============plugConfig start==================
 
 
 " vim-smooth-scroll config
@@ -353,6 +341,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 " vim-airline config
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
 let g:airline_theme='bubblegum'
 set laststatus=2  "永远显示状态栏
 
@@ -451,7 +440,6 @@ set synmaxcol   =5000       " 高亮显示行数，小一点节省内存，但�
 
 
 
-
 "[输入法智能切换设置] 8.2以后不需要了
 "一些必要的设置,比如是什么按键切换中英文状态.如果加入"imcmdline"选项则命令模式下输入法默认为被开启.
 " set imak=S imi=2 ims=2
@@ -488,8 +476,6 @@ set shiftwidth=2
 "当设置成 expandtab 时，缩进用空格来表示，noexpandtab 则是用制表符表示一个缩进。
 set expandtab
 
-" 去掉菜单栏
-set go=
 
 " 主题
 colorscheme hybrid
@@ -524,9 +510,6 @@ set foldlevelstart=99       " 打开文件是默认不折叠代码
 set vb t_vb=
 au GuiEnter * set t_vb=
 
-
-" 初始启动位置
-:cd d:\
 
 "================config end==================
 
