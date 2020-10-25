@@ -192,13 +192,20 @@ let g:startify_custom_header = [
 
 " 设置自动session保存
 let g:startify_session_persistence = 1
-" session保存前执行，防止因为懒加载而出现冲突。不用加<cr>，自动会回车
+" session保存前执行，防止因为懒加载而出现冲突
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
-    \ 'NERDTreeClose',
-    \ 'TagbarClose',
-    \ 'echo "ok"'
+    \ 'silent! NERDTreeClose',
+    \ 'silent! TagbarClose',
+    \ ''
     \ ]
+" 开启自动保存的变量名称，保证每个session都可以个性化
+" g:mdip_imgdir: 图片存储路径
+let g:startify_session_savevars = [
+        \ 'g:mdip_imgdir',
+        \ 'g:mdip_imgdir_intext'
+        \ ]
+
 " 自动跳转到版本管理工具的目录
 " let g:startify_change_to_vcs_root = 1
 " 跳转到开始菜单
@@ -239,7 +246,7 @@ let g:vim_markdown_list_item_indent = 2
 " auto turn on
 " autocmd vimenter * NERDTree
 " ctrl+n to toggle file tree
-noremap <silent><leader>n :NERDTreeToggle<CR>
+noremap <silent><C-n> :NERDTreeToggle<CR>
 " ignore file
 let NERDTreeIgnore=[
     \ '\.pyc$','\~$','\.swp','\.git$','\.pyo$','\.svn$','\.swp$','__pycache__'
@@ -274,10 +281,20 @@ nmap <leader>j <Plug>(easymotion-s2)
 
 
 
-"粘贴图片配置
+"md-img-paste config 粘贴图片配置
 autocmd FileType markdown nmap <buffer><silent> <leader>m :call mdip#MarkdownClipboardImage()<CR>
 autocmd FileType md nmap <buffer><silent> <leader>m :call mdip#MarkdownClipboardImage()<CR>
-let g:mdip_imgdir = './image'
+let g:mdip_imgdir = './image'  " 图片存放位置
+let g:mdip_imgdir_intext = g:mdip_imgdir " md中()中的位置
+
+" 定义设置路径的函数。注意：要使用call
+function SetImagePath()
+    let l:name = input('Image path: ')
+    let g:mdip_imgdir = l:name
+    let g:mdip_imgdir_intext = l:name
+    return name
+endfunction
+nnoremap <leader>sm :call SetImagePath()<cr>
 
 " python 插件配置
 " let g:python3_host_prog='D:/learn/anaconda3/envs/learn/python.exe'
@@ -410,7 +427,7 @@ set splitright             " Open new windows right of the current window.
 set cursorline             "  光标所在行高亮
 set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
-set synmaxcol   =5000       " 高亮显示行数，小一点节省内存，但是可能对大文件出现渲染错误
+set synmaxcol   =5000       " 高亮显示行数，小一点节省内存，但是可能对大文件出现渲染错误 默认3000
 
 
 " vim 默认在插入模式关闭输入法，可以修改 iminsert 选项来开启。
